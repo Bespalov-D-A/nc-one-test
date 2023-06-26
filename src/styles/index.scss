@@ -1,0 +1,17 @@
+@import "./variables.css";
+
+body {
+  background: #fbfbfb;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(65, 65, 65, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffcc26;
+}
