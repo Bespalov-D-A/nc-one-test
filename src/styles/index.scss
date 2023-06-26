@@ -1,7 +1,12 @@
 @import "./variables.css";
 
+html {
+  height: 100vh;
+}
+
 body {
-  background: #fbfbfb;
+  height: 100vh;
+  background-color: #fbfbfb !important;
 }
 
 ::-webkit-scrollbar {

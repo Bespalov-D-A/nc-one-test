@@ -20,7 +20,7 @@ const ProductsList: React.FC<IProductsList> = props => {
       <Grid container spacing={2}>
         {products &&
           products.length > 0 &&
-          products.slice(0, 9).map((product: Iimage) => (
+          products.slice(0, 999).map((product: Iimage) => (
             <Grid xs={3} key={product.id}>
               <ProductCard />
             </Grid>

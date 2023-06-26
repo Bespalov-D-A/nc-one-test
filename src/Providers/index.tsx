@@ -4,5 +4,5 @@ import WithMuiStyled from './Mui';
 
 //композируем все необходимые для приложения провайдеры
 export const withProviders = compose(
-	 (component: ReactNode) => <WithMuiStyled component={component} />
+	 (component: ReactNode) => <WithMuiStyled component={component} />,
 );
