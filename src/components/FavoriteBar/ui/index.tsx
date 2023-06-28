@@ -1,4 +1,6 @@
 import Card from "@mui/material/Card";
+import "./fade.css";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useTheme from "@mui/material/styles/useTheme";
 import Typography from "@mui/material/Typography";
 import React, { useEffect } from "react";
@@ -66,17 +68,25 @@ const FavoriteBar: React.FC<IFavoriteBar> = props => {
           trackStyles={trackStyles}
           scrollStyles={scrollStyles}
           component={() => (
-            <>
+            <TransitionGroup>
               {favoriteProducts &&
                 Array.isArray(favoriteProducts) &&
                 favoriteProducts.map((product: Iimage) => {
                   return (
-                    <div key={product.id}>
-                      <FavoriteCard {...product} src={apiUrl + product.src} />
-                    </div>
+                    <CSSTransition
+                      key={product.id}
+                      timeout={300}
+                      classNames="fade"
+                    >
+                      <FavoriteCard
+                        show={true}
+                        {...product}
+                        src={apiUrl + product.src}
+                      />
+                    </CSSTransition>
                   );
                 })}
-            </>
+            </TransitionGroup>
           )}
         />
       </Card>
