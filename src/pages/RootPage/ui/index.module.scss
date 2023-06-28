@@ -6,9 +6,10 @@
 
 .content {
   display: flex;
-  height: 100%;
+  flex: 1;
 }
 
 .wrap {
   display: flex;
+  width: 100%;
 }

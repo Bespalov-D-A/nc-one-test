@@ -1,11 +1,19 @@
 .wrap {
   width: 100%;
   max-width: 407px;
-  margin: 75px 100px;
+  margin: 100px 100px 75px;
 }
 
 .bar {
+  display: flex;
+  flex-flow: column wrap;
   height: 100%;
+  padding: 30px 18px 30px 30px;
   background-image: var(--bg-dashed);
   border-radius: 30px;
+}
+
+.title {
+  margin-bottom: 27px;
+  text-transform: uppercase;
 }

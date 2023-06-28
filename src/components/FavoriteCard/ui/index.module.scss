@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 11px 15px;
+  margin-bottom: 24px;
+  border-radius: 30px;
+  background: #fbfbfb;
+}
+
+.wrap {
+  display: flex;
+  flex: 1;
+  flex-flow: column wrap;
+}
+
+.photo {
+  width: 108px;
+  height: 108px;
+  border-radius: 30px;
+  overflow: hidden;
+}

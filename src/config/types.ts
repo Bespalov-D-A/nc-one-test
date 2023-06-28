@@ -4,3 +4,7 @@ export interface Iimage {
   price: number;
   src: string;
 }
+
+export interface Iproduct extends Iimage {
+  active: boolean;
+}

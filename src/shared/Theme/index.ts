@@ -2,6 +2,14 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   typography: {
+    fontFamily: ["Poppins"].join(","),
+    body2: {
+      fontSize: 20,
+    },
+    body1: {
+      fontSize: 24,
+      fontWeight: "bold",
+    },
     h1: {
       textAlign: "center",
       fontFamily: "Anek Telugu",

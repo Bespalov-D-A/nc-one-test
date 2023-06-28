@@ -7,3 +7,10 @@ export const getProducts = async (): Promise<Iimage[]> => {
   });
   return await res.json();
 };
+
+export const getOneProduct = async (id: number ): Promise<Iimage> => {
+  const res = await fetch(`${apiUrl}/image?id=${id}`, {
+    method: "GET",
+  });
+  return await res.json();
+};

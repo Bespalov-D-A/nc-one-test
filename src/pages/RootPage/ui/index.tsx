@@ -7,21 +7,19 @@ import s from "./index.module.scss";
 
 interface IRootPage {}
 
+// <CustomScrollBar
+//   component={() => {
+//     return (
+
 const RootPage: React.FC<IRootPage> = props => {
   return (
     <div className={s["root-page"]}>
       <Header />
       <div className={s.content}>
         <FavoriteBar />
-        <CustomScrollBar
-          component={() => {
-            return (
-              <div className={s.wrap}>
-                <Outlet />
-              </div>
-            );
-          }}
-        />
+        <div className={s.wrap}>
+          <Outlet />
+        </div>
       </div>
     </div>
   );
