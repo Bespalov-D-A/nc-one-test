@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.09461718.css",
-    "main.js": "/static/js/main.16a535ae.js",
-    "static/js/787.b6efbf65.chunk.js": "/static/js/787.b6efbf65.chunk.js",
-    "static/media/zoom.svg": "/static/media/zoom.3ceb01fd4467d5744b485dc632e28e2a.svg",
-    "index.html": "/index.html",
-    "static/media/like.svg": "/static/media/like.83bbbcf584c678d3e572b1d0ccf92040.svg",
-    "main.09461718.css.map": "/static/css/main.09461718.css.map",
-    "main.16a535ae.js.map": "/static/js/main.16a535ae.js.map",
-    "787.b6efbf65.chunk.js.map": "/static/js/787.b6efbf65.chunk.js.map"
+    "main.css": "/nc-one-test/static/css/main.09461718.css",
+    "main.js": "/nc-one-test/static/js/main.7646b49f.js",
+    "static/js/787.b6efbf65.chunk.js": "/nc-one-test/static/js/787.b6efbf65.chunk.js",
+    "static/media/zoom.svg": "/nc-one-test/static/media/zoom.3ceb01fd4467d5744b485dc632e28e2a.svg",
+    "index.html": "/nc-one-test/index.html",
+    "static/media/like.svg": "/nc-one-test/static/media/like.83bbbcf584c678d3e572b1d0ccf92040.svg",
+    "main.09461718.css.map": "/nc-one-test/static/css/main.09461718.css.map",
+    "main.7646b49f.js.map": "/nc-one-test/static/js/main.7646b49f.js.map",
+    "787.b6efbf65.chunk.js.map": "/nc-one-test/static/js/787.b6efbf65.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.09461718.css",
-    "static/js/main.16a535ae.js"
+    "static/js/main.7646b49f.js"
   ]
 }
