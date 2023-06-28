@@ -19,4 +19,9 @@
   height: 108px;
   border-radius: 30px;
   overflow: hidden;
+  cursor: pointer;
+  & img {
+    width: 108px;
+    height: 108px;
+  }
 }

@@ -2,6 +2,10 @@
   width: 100%;
   max-width: 407px;
   margin: 100px 100px 75px;
+  @media screen and (max-width: 1280px) {
+    height: 100%;
+    margin: 0;
+  }
 }
 
 .bar {
@@ -11,6 +15,9 @@
   padding: 30px 18px 30px 30px;
   background-image: var(--bg-dashed);
   border-radius: 30px;
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+  }
 }
 
 .title {

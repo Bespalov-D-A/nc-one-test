@@ -22,7 +22,9 @@ export const setActiveProducts = (
 
 //функция расчет колво столбцов для сетки
 export const maxColumns = (containerWidth: number, cardWidth: number) =>
-  Math.floor((containerWidth - 85) / cardWidth);
+  Math.floor((containerWidth - 85) / cardWidth) < 1
+    ? 1
+    : Math.floor((containerWidth - 85) / cardWidth);
 
 //доп. функция расчета колва столбцов для сетки
 export const columnCount = (

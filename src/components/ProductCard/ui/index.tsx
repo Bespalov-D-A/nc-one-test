@@ -1,33 +1,31 @@
 import Card from "@mui/material/Card";
-import { reactLocalStorage } from "reactjs-localstorage";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import React, { useEffect, useState } from "react";
-import { Iimage, Iproduct } from "../../../config/types";
+import { Iproduct } from "../../../config/types";
 import s from "./index.module.scss";
 import { ActionBlock } from "../../_common/CardAction";
-import { setLike } from "../../../shared/lib/activeLike";
 import { useNavigate } from "react-router-dom";
+import { FC, Suspense } from "react";
+import Box from "@mui/material/Box";
+import { LoadedImage } from "../../../shared/ui/LoadedImage";
 
 interface IProductCard extends Iproduct {
   setProducts: (arg1: Iproduct[]) => void;
 }
 
-const ProductCard: React.FC<IProductCard> = props => {
-  const { id, name, price, src, active, setProducts } = props;
+//Компонент стандартной карточки продукта
+//страницы с продуктами
+const ProductCard: FC<IProductCard> = props => {
+  const { id, name, price, src, active } = props;
   const navigate = useNavigate();
 
   return (
     <Card className={s.card}>
-      <CardMedia
-        className={s.photo}
-        onClick={() => navigate(`product?id=${id}`)}
-        component="img"
-        height="194"
-        image={src}
-        alt="Paella dish"
-      />
+      <Box className={s.photo} onClick={() => navigate(`product?id=${id}`)}>
+        <Suspense fallback>
+          <LoadedImage style={{ height: 194 }} url={src} />
+        </Suspense>
+      </Box>
       <CardContent className={s.content}>
         <Typography variant="body2" color="text.secondary">
           {name}

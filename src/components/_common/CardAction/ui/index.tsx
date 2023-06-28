@@ -4,8 +4,9 @@ import Svg from "./../../../../shared/img/like.svg";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { reactLocalStorage } from "reactjs-localstorage";
 import { useGlobalState } from "../../../../store";
+import { useMediaQuery } from "react-responsive";
+import { addFavorite } from "../lib";
 
 interface IActionBlock {
   active: boolean;
@@ -14,56 +15,42 @@ interface IActionBlock {
   item?: boolean;
 }
 
+//Компонент лайка продукта и его цены
 const ActionBlock: React.FC<IActionBlock> = ({ active, id, price, item }) => {
-  const [favoriteProducts, setFavoriteProducts] =
-    useGlobalState("favoriteProducts");
   const [favoriteProductsIds, setFavoriteProductsIds] = useGlobalState(
     "favoriteProductsIds"
   );
 
-  function addFavorite() {
-    try {
-      const favorites: {} | undefined | { arr: number[] } =
-        reactLocalStorage.getObject("fav");
-      if (favorites && "arr" in favorites && Array.isArray(favorites.arr)) {
-        if (active) {
-          const index = favorites.arr.findIndex(e => e === id);
-          index !== -1 && favorites.arr.splice(index, 1);
-        } else {
-          favorites.arr.push(id);
-        }
-        reactLocalStorage.setObject("fav", favorites);
-        setFavoriteProductsIds(favorites.arr);
-      } else {
-        const fav: { arr: number[] } = { arr: [] };
-        fav.arr.push(id);
-        reactLocalStorage.setObject("fav", fav);
-        setFavoriteProductsIds(fav.arr);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  const isMobile = useMediaQuery({
+    query: "(max-width: 1280px)",
+  });
 
   return (
     <CardActions className={s.actions} disableSpacing>
       <Typography
-        style={item ? { fontSize: 64, fontWeight: 500 } : {}}
+        style={isMobile ? {} : item ? { fontSize: 64, fontWeight: 500 } : {}}
         variant="body1"
         color="text.secondary"
       >
         ${price}
       </Typography>
-      <IconButton onClick={addFavorite} aria-label="add to favorites">
+      <IconButton
+        onClick={() =>
+          addFavorite(active, id, (arr: number[]) =>
+            setFavoriteProductsIds(arr)
+          )
+        }
+        aria-label="add to favorites"
+      >
         <div style={{ position: "relative" }}>
           {active && (
             <div
               style={{
                 position: "absolute",
-                top: item ? 5 : 1,
-                left: item ? 5 : 1,
-                width: item ? 80 : 30,
-                height: item ? 80 : 30,
+                top: isMobile ? 3 : item ? 5 : 3,
+                left: isMobile ? 3 : item ? 5 : 3,
+                width: isMobile ? 30 : item ? 80 : 24,
+                height: isMobile ? 30 : item ? 80 : 24,
                 borderRadius: 7,
                 background: "#414141",
                 zIndex: "1",
@@ -75,8 +62,8 @@ const ActionBlock: React.FC<IActionBlock> = ({ active, id, price, item }) => {
             style={{
               position: "relative",
               zIndex: 2,
-              width: item ? 98 : 30,
-              height: item ? 98 : 30,
+              width: isMobile ? 30 : item ? 98 : 30,
+              height: isMobile ? 30 : item ? 98 : 30,
             }}
           />
         </div>

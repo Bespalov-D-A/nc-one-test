@@ -1,11 +1,13 @@
 @import "./variables.css";
 
-html {
-  height: 100vh;
+* {
+  box-sizing: border-box;
 }
 
+html,
 body {
   height: 100vh;
+  overflow: hidden;
   background-color: #fbfbfb !important;
 }
 

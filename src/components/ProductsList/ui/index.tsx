@@ -3,35 +3,35 @@ import {
   GridChildComponentProps,
   VariableSizeGrid as Grid,
 } from "react-window";
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getProducts } from "../../../api";
-import { apiUrl } from "../../../config";
+import { apiUrl, cardWidth } from "../../../config";
 import { Iproduct } from "../../../config/types";
 import { useGlobalState } from "../../../store";
 import { ProductCard } from "../../ProductCard";
-import { columnCount, maxColumns, setActiveProducts } from "../lib";
+import { columnCount, maxColumns } from "../lib";
 import s from "./index.module.scss";
 import AutoSizer from "react-virtualized-auto-sizer";
-
-//Ширина карточки товара в листе товаров
-export const cardWidth = 290;
+import { useMediaQuery } from "react-responsive";
 
 interface IProductsList {}
 
 const ProductsList: React.FC<IProductsList> = props => {
   const [products, setProducts] = useGlobalState("products");
   const [favoriteProductsIds] = useGlobalState("favoriteProductsIds");
+  const [isLoad, setIsLoad] = useState<boolean>(false);
 
   const isActive = (id: number) =>
     id && !!favoriteProductsIds.includes(Number(id)) ? true : false;
 
   useEffect(() => {
+    setIsLoad(true);
     getProducts()
       .then(
         res => setProducts(res) //Сетаем полученные товары в глобальный стейт
       )
       .catch(e => console.log(e))
-      .finally();
+      .finally(() => setIsLoad(false));
   }, []);
 
   interface IDrawProducts extends GridChildComponentProps {
@@ -44,6 +44,9 @@ const ProductsList: React.FC<IProductsList> = props => {
     const { style, columnIndex, width, rowIndex, data } = props;
     const count = columnCount(width, cardWidth, data.length); //Получаем колво столбцов которое надо отрисовать
     const item = data[columnIndex + rowIndex * count]; //Получаем итерируемый элемент (продукт)
+    const isMobile = useMediaQuery({
+      query: "(max-width: 1280px)",
+    });
 
     return item ? (
       <div
@@ -52,7 +55,7 @@ const ProductsList: React.FC<IProductsList> = props => {
           top: `${parseFloat(style.top ? String(style.top) : "0") + 85}px`, //Отступ сверху для сетки
           left: `${
             parseFloat(style.left ? String(style.left) : "0") +
-            Math.floor(((width - 85) % cardWidth) / 2)
+            Math.ceil(((width - (isMobile ? 0 : 85)) % cardWidth) / 2)
           }px`, //Центрируем сетку по центру страницы
         }}
       >

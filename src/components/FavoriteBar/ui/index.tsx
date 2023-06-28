@@ -1,32 +1,18 @@
 import Card from "@mui/material/Card";
 import useTheme from "@mui/material/styles/useTheme";
 import Typography from "@mui/material/Typography";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { reactLocalStorage } from "reactjs-localstorage";
 import { apiUrl } from "../../../config";
-import { Iimage, Iproduct } from "../../../config/types";
+import { Iimage } from "../../../config/types";
 import CustomScrollBar from "../../../shared/ui/CustomScrollBar";
 import { useGlobalState } from "../../../store";
 import { FavoriteCard } from "../../FavoriteCard";
-import { getAllFavProducts, remapFavorites } from "../lib";
+import { getAllFavProducts } from "../lib";
+import { scrollStyles, trackStyles } from "../model";
 import s from "./index.module.scss";
 
 interface IFavoriteBar {}
-
-export const scrollStyles = {
-  position: "relative",
-  height: "100%",
-  padding: "0 12px 0 0",
-};
-
-export const trackStyles = {
-  position: "absolute",
-  right: 0,
-  top: 0,
-  bottom: 0,
-  width: 8,
-  backgroundColor: "rgba(240,240,240,0)",
-};
 
 const FavoriteBar: React.FC<IFavoriteBar> = props => {
   const [favoriteProducts, setFavoriteProducts] =
