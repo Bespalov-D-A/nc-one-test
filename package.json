@@ -1,7 +1,7 @@
 {
   "name": "nc-one",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -38,7 +38,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:e2e": "react-scripts test --testPathPattern=.*e2e.test.ts$"
+    "test:e2e": "react-scripts test --testPathPattern=.*e2e.test.ts$",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -71,6 +73,7 @@
     "@types/react-lazyload": "^3.2.0",
     "@types/react-window": "^1.8.5",
     "@types/reactjs-localstorage": "^1.0.0",
+    "gh-pages": "^5.0.0",
     "node-fetch": "^3.3.1",
     "puppeteer": "^18.1.0",
     "puppeteer-core": "^20.7.3"
